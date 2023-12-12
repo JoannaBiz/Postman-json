@@ -1,5 +1,4 @@
-
-Learning API
+#Learning API
 Description
 This repository contains a Postman collection for testing the "Learning" API. Below, you will find a description of available endpoints along with sample requests and tests.
 
