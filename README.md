@@ -1,45 +1,45 @@
-#Learning API
-Description
+
+# Learning API
+## Description
 This repository contains a Postman collection for testing the "Learning" API. Below, you will find a description of available endpoints along with sample requests and tests.
 
-Requests
-1. Get all posts
+## Requests
+### 1. Get all posts
 Endpoint: GET /posts
 
-Tests:
+#### Tests:
 
-javascript
-Copy code
+```javascript
 pm.test("Status code is 200", function () {
     pm.response.to.have.status(200);
 });
-2. Get the first post
+```
+### 2. Get the first post
 Endpoint: GET /posts/1
 
-Tests:
+#### Tests:
 
-javascript
-Copy code
+```javascript
 pm.test("Status code is 200", function () {
     pm.response.to.have.status(200);
 });
-3. Filters
+```
+### 3. Filters
 Endpoint: GET /posts?title=json-server&author=typicode
 
-Tests:
+#### Tests:
 
-javascript
-Copy code
+```javascript
 pm.test("Status code is 200", function () {
     pm.response.to.have.status(200);
 });
-4. Add a new post
+```
+### 4. Add a new post
 Endpoint: POST /posts
 
-Tests:
+#### Tests:
 
-javascript
-Copy code
+```javascript
 pm.test("Status code is 201", function () {
     pm.response.to.have.status(201);
 });
@@ -53,38 +53,41 @@ pm.test("Check author", function () {
     var jsonData = pm.response.json();
     pm.expect(jsonData.author).to.eql(pm.environment.get("randomName"));
 });
-Pre-request:
+```
+#### Pre-request:
 
-javascript
-Copy code
+```javascript
 pm.environment.set("randomName", pm.variables.replaceIn('{{$randomFullName}}'));
-5. Update a post
+```
+
+### 5. Update a post
 Endpoint: PUT /posts/1
 
-Tests:
+#### Tests:
 
-javascript
-Copy code
+```javascript
 pm.test("Status code is 200", function () {
     pm.response.to.have.status(200);
 });
-6. Update one part of a post
+```
+
+### 6. Update one part of a post
 Endpoint: PATCH /posts/5
 
-Tests:
+#### Tests:
 
-javascript
-Copy code
+```javascript
 pm.test("Status code is 404", function () {
     pm.response.to.have.status(404);
 });
-7. Add a new post to delete
+```
+
+### 7. Add a new post to delete
 Endpoint: POST /posts
 
-Tests:
+#### Tests:
 
-javascript
-Copy code
+```javascript
 pm.test("Status code is 201", function () {
     pm.response.to.have.status(201);
 });
@@ -100,19 +103,21 @@ pm.test("Check author", function () {
 });
 
 pm.globals.set("postidtodelete", pm.response.json().id);
-Pre-request:
+```
+#### Pre-request:
 
-javascript
+```javascript
 Copy code
 pm.environment.set("randomName", pm.variables.replaceIn('{{$randomFullName}}'));
-8. Delete a post
+```
+### 8. Delete a post
 Endpoint: DELETE /posts/{{postidtodelete}}
 
-Tests:
+#### Tests:
 
-javascript
-Copy code
+```javascript
 pm.test("Status code is 200", function () {
     pm.response.to.have.status(200);
 });
+```
 Access the API server at: http://{{host}}:3000
